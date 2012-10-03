@@ -1,0 +1,32 @@
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+mainClassName = 'com.foo.Main'
+
+dependencies {
+    groovy 'org.codehaus.groovy:groovy:1.8.8'
+    // Jersey client/server jars
+    compile 'com.sun.jersey:jersey-server:1.13'
+    compile 'com.sun.jersey:jersey-servlet:1.13'
+    compile 'com.sun.jersey:jersey-client:1.13'
+    compile 'com.sun.jersey:jersey-core:1.13'
+    compile 'com.sun.jersey:jersey-json:1.13'
+    compile 'com.sun.jersey:jersey-grizzly2:1.13'
+    compile 'com.sun.jersey:jersey-grizzly2-servlet:1.13'
+    // Spock
+    testCompile 'org.spockframework:spock-core:0.6-groovy-1.8'
+    // Jersey test framework
+    testCompile 'com.sun.jersey.jersey-test-framework:jersey-test-framework-core:1.13'
+    testCompile 'com.sun.jersey.jersey-test-framework:jersey-test-framework-grizzly2:1.13'
+    // Magic
+    compile 'org.projectlombok:lombok:0.11.4'
+}
+
+buildscript {
+    apply from: 'https://raw.github.com/gschmidl/jacoco-gradle/master/jacoco.gradle'
+}
+
+repositories {
+    mavenCentral()
+}
